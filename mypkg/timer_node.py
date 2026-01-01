@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-# SPDX-FileCopyrightText: 2025 Saito Shinnosuke
+#!/usr/bin/python3
+# SPDX-FileCopyrightText: 2025 Shoma Takatori
 # SPDX-License-Identifier: BSD-3-Clause
 
 import rclpy
