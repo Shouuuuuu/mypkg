@@ -3,7 +3,7 @@
 <package format="3">
   <name>mypkg</name>
   <version>0.0.0</version>
-  <description>a simple Pomodoro timer package using ROS 2 services and topicks.</description>
+  <description>a simple Pomodoro timer package using ROS 2 services and topics.</description>
   <maintainer email="shoma@hogehoge.com">shou</maintainer>
   <license>BSD-3-Clause</license>
 
