@@ -8,15 +8,13 @@ class PomodoroTimer(Node):
 
     def __init__(self):
         super().__init__('pomodoro_timer')
-        
         self.work_duration = 25 * 60
         self.current_time = self.work_duration
         self.is_running = False
-
         self.publisher_ = self.create_publisher(String, 'mypkg/countdown', 10)
-        self.srv = self.create_service(SetBool, 'mypkg/control', self.control_callback)
+        self.srv = self.create_service(
+            SetBool, 'mypkg/control', self.control_callback)
         self.timer = self.create_timer(1.0, self.timer_callback)
-        
         self.get_logger().info('mypkg Pomodoro Timer Ready.')
 
     def control_callback(self, request, response):
@@ -39,7 +37,6 @@ class PomodoroTimer(Node):
             msg = String()
             msg.data = f"Remaining: {mins:02d}:{secs:02d}"
             self.publisher_.publish(msg)
-            
             if self.current_time == 0:
                 self.is_running = False
                 self.get_logger().info("Time up!")
@@ -55,3 +52,7 @@ def main(args=None):
     finally:
         node.destroy_node()
         rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
