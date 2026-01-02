@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.10"]  # ROS2 Humbleに合わせ、3.10に絞るのが安全です
     steps:
-    - uses: actions/checkout@v3
-    - name: All test
-      run: |
-      chmod +x ./test.bash
-      ./test.bash
+      - uses: actions/checkout@v3
+      - name: All test
+        run: |
+          chmod +x ./test.bash
+          ./test.bash
