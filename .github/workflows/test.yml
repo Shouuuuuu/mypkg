@@ -1,33 +1,14 @@
-name: ROS 2 CI
-
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
-
+name: test
+on: push
 jobs:
-  build-and-test:
+  test:
     runs-on: ubuntu-latest
-    container:
-      image: ros:humble-ros-base
+    strategy:
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
     steps:
-      - uses: actions/checkout@v3
-      
-      - name: Install dependencies
-        run: |
-          apt-get update
-          apt-get install -y python3-pip
-          rosdep update
-          rosdep install --from-paths . --ignore-src -y
-
-      - name: Build packages
-        run: |
-          . /opt/ros/humble/setup.sh
-          colcon build --packages-select mypkg
-
-      - name: Run tests
-        run: |
-          . /opt/ros/humble/setup.sh
-          colcon test --packages-select mypkg
-          colcon test-result --verbose
+    - uses: actions/checkout@v3
+    - name: All test
+      run: |
+      chmod +x ./test.bash
+      ./test.bash
